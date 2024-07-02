@@ -54,15 +54,15 @@ const TextField = styled(EdsTextField)<ITextFieldProps>`
         box-shadow: inset 0 -2px 0 0 ${colors.interactive.primary__resting.rgba};
       }
    }
-   
-  `}
 
+  `}
   div:focus-within {
     outline: none;
   }
 `;
 
 export interface EditableFieldProps {
+  className?: string;
   editable: boolean;
   inputField?: ReactElement;
   value?: string;
@@ -71,6 +71,7 @@ export interface EditableFieldProps {
 }
 
 const EditableField: React.FC<EditableFieldProps> = ({
+  className,
   editable,
   value: initValue,
   inputField,
@@ -116,6 +117,7 @@ const EditableField: React.FC<EditableFieldProps> = ({
       $editable={editable}
       data-testid="editablefield"
       onClick={handleFieldClick}
+      className={className}
     >
       {!editing && !children && <Typography variant="h6">{value}</Typography>}
       {!editing && children && children}
